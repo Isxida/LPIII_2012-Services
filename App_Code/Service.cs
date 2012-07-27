@@ -51,7 +51,7 @@ public class Service : IService
     //Metodos findObject
     System.Data.DataSet IService.findUsuario(String dni)
     {
-        SqlDataAdapter da = new SqlDataAdapter("Select * from Usuario where dni=@dni", cn);
+        SqlDataAdapter da = new SqlDataAdapter("Select TOP 1 * from Usuario where dni like '%@dni%'", cn);
         da.SelectCommand.Parameters.Add("@dni", SqlDbType.VarChar).Value = dni;
         DataSet ds = new DataSet();
         da.Fill(ds);
@@ -59,7 +59,7 @@ public class Service : IService
     }
     System.Data.DataSet IService.findStudio(String cod)
     {
-        SqlDataAdapter da = new SqlDataAdapter("Select * from Studio where codigo=@cod", cn);
+        SqlDataAdapter da = new SqlDataAdapter("Select TOP 1 * from Studio where codigo like '%@cod%'", cn);
         da.SelectCommand.Parameters.Add("@cod", SqlDbType.VarChar).Value = cod;
         DataSet ds = new DataSet();
         da.Fill(ds);
@@ -67,7 +67,7 @@ public class Service : IService
     }
     System.Data.DataSet IService.findReserva(String dni)
     {
-        SqlDataAdapter da = new SqlDataAdapter("Select * from Reservas where dni=@dni", cn);
+        SqlDataAdapter da = new SqlDataAdapter("Select TOP 1 * from Reservas where dni like '%@dni%'", cn);
         da.SelectCommand.Parameters.Add("@dni", SqlDbType.VarChar).Value = dni;
         DataSet ds = new DataSet();
         da.Fill(ds);
@@ -75,7 +75,7 @@ public class Service : IService
     }
     System.Data.DataSet IService.findInstrumento(String cod)
     {
-        SqlDataAdapter da = new SqlDataAdapter("Select * from Instrumentos where codigo=@cod", cn);
+        SqlDataAdapter da = new SqlDataAdapter("Select TOP 1* from Instrumentos where codigo like '@cod'", cn);
         da.SelectCommand.Parameters.Add("@cod", SqlDbType.VarChar).Value = cod;
         DataSet ds = new DataSet();
         da.Fill(ds);
