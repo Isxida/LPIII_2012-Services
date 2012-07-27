@@ -37,7 +37,7 @@ public interface IService
     DataSet showReservas();
 
     [OperationContract]
-    DataSet findReserva(String cod);
+    DataSet findReserva(String dni);
 
 }
 
